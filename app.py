@@ -6,7 +6,7 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
-app.secret_key = "kkjhrjr77447gr5fks"
+app.secret_key = "add your password"
 app.register_blueprint(auth_bp)
 
 # Load trained model
