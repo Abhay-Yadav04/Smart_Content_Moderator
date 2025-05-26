@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .header {
+      background-color: #FF0000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .logout-button {
+      background-color: #fff;
+      color: #FF0000;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .logout-button:hover {
+      background-color: #ffcccc;
+      color: #cc0000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    h2, h3 {
+      color: #fff;
+    }
+
+    select, button {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button[type="submit"] {
+      background-color: #FF0000;
+      color: rgb(218, 208, 208);
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #cc0000;
+    }
+
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .video-label {
+      display: block;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 200px;
+      background-color: rgba(30, 30, 30, 0.6);
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-label:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #FF0000;
+    }
+
+    .video-label img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      transition: 0.2s ease;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + img {
+      border: 3px solid #FF0000;
+      box-shadow: 0 0 8px #FF0000;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #db1c1c;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .message-box {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #202020;
+      border-left: 6px solid #FF0000;
+      border-radius: 5px;
+    }
+
+    .no-comments {
+      color: #aaa;
+    }
+
+    /* Loader Spinner */
+    .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #FF0000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 30px auto;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1><i class="fab fa-youtube"></i> YouTube Toxic Comment Cleaner</h1>
+    <a href="{{ url_for('auth.logout') }}" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <div class="container">
+    <h2>Select a Video to Analyze</h2>
+    <form method="POST" action="/analyze" onsubmit="document.getElementById('loader').style.display = 'block'">
+      <h3>Select a Video:</h3>
+      <div class="video-grid">
+        {% for video in videos %}
+          <label class="video-label">
+            <input type="radio" name="video_id" value="{{ video.id }}" required>
+            <img src="{{ video.thumbnail }}" alt="thumbnail">
+            <p>{{ video.title }}</p>
+          </label>
+        {% endfor %}
+      </div>
+      <br>
+      <button type="submit"><i class="fas fa-broom"></i> Analyze Comments</button>
+    </form>
+
+    <!-- Loader (Hidden Initially) -->
+    <div id="loader" class="loader"></div>
+
+    {% if result %}
+      <div class="message-box">
+        🧹 {{ result|length }} toxic comment{{ 's' if result|length > 1 else '' }} deleted successfully!
+      </div>
+      <h3>Deleted Comments:</h3>
+      <ul>
+        {% for comment in result %}
+          <li>💬 {{ comment.text }}</li>
+        {% endfor %}
+      </ul>
+    {% elif result is not none %}
+      <div class="message-box">
+        ✅ No toxic comments found!
+      </div>
+    {% endif %}
+  </div>
+
+  <footer>
+    Built with ❤️ for a Safer YouTube
+  </footer>
+
+</body>
+</html>
