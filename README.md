@@ -1,0 +1,1 @@
+This project Smart Content Moderator aims to classify Toxic comments (using Random Forest Machine learning algorithm) from under users Youtube video and delete them for positive environment for both user and young viewers
