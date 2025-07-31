@@ -37,7 +37,7 @@ This project combines **Flask**, **YouTube Data API**, **OAuth 2.0**, and **Mach
 | **Google OAuth** | Secure user login           |
 | **Scikit-learn** | Machine learning model      |
 | **TF-IDF**     | Comment feature extraction   |
-| **HTML/CSS/JS**| Frontend                     |
+| **HTML/CSS**| Frontend                     |
 
 ---
 
