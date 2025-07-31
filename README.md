@@ -1,6 +1,6 @@
 # 🎯 Smart Content Moderator
 
-![License](https://github.com/Abhay-Yadav04/Smart_Content_Moderator/blob/main/LICENSE) ![Python](https://www.python.org/) ![Flask](https://flask.palletsprojects.com/)  
+[![License]()](https://github.com/Abhay-Yadav04/Smart_Content_Moderator/blob/main/LICENSE) [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)(https://www.python.org/) [![Flask](https://img.shields.io/badge/built%20with-Flask-yellow)](https://flask.palletsprojects.com/)  
 A child-safe YouTube content recommender and comment moderator using Machine Learning & YouTube API.
 
 ---
