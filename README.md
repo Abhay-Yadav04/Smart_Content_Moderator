@@ -1,6 +1,6 @@
 # 🎯 Smart Content Moderator
 
-![License](https://img.shields.io/badge/license-MIT-green) ![Python](https://img.shields.io/badge/python-3.8+-blue.svg) ![Flask](https://img.shields.io/badge/built%20with-Flask-yellow)  
+![License](https://github.com/Abhay-Yadav04/Smart_Content_Moderator/blob/main/LICENSE) ![Python](https://www.python.org/) ![Flask](https://flask.palletsprojects.com/)  
 A child-safe YouTube content recommender and comment moderator using Machine Learning & YouTube API.
 
 ---
@@ -12,7 +12,7 @@ A child-safe YouTube content recommender and comment moderator using Machine Lea
 - Automatically classifying and **deleting toxic comments** from a user's own videos after logging in via Google/YouTube.
 - Providing a friendly, interactive interface with Google OAuth authentication.
 
-This project combines **Flask**, **YouTube Data API**, **OAuth 2.0**, and **Machine Learning (Random Forest Classifier)** to help creators and parents maintain a safe and clean video environment.
+This project combines **Machine Learning (Random Forest Classifier)**, and  **Flask**, **YouTube Data API**, **OAuth 2.0** to help creators and parents maintain a safe and clean video environment.
 
 ---
 
